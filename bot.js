@@ -13,7 +13,23 @@ function runBot() {
   fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
     .then(resp => resp.json())
     .then(text => text[0])
-    .then(bitcoin => Bot.tweet(`Bitcoin Price: ${bitcoin.price_usd} [USD]\n`))
+    .then(
+      info => `Bitcoin Price: ${info.price_usd} [USD]
+Remaining Supply: ${(100 - info.total_supply / info.max_supply * 100).toFixed(
+        3
+      )}%
+1hr - change: ${info.percent_change_1h > 0
+        ? info.percent_change_1h + '% 📈'
+        : info.percent_change_1h + '% 📉'}
+1day - trend: ${info.percent_change_24h > 0
+        ? info.percent_change_24h + '% 📈'
+        : info.percent_change_24h + '% 📉'}
+1week - trend: ${info.percent_change_7d > 0
+        ? info.percent_change_7d + '% 📈'
+        : info.percent_change_7d + '% 📉'}`
+    )
+    .then(bitcoin => Bot.tweet(bitcoin))
+    //.then(bitcoin => console.log(bitcoin))
     .catch(error => console.log('Error ', error));
 }
 

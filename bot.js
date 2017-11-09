@@ -11,15 +11,19 @@ var Bot = new TwitterBot({
 
 let twitterText;
 
-fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
-  .then(resp => resp.json())
-  .then(resp => {
-    twitterText = `Bitcoin Price: ${resp.price_usd} [USD]\n`;
-  })
-  .then(text => {
-    Bot.tweet(text);
-  })
-  .catch(error => console.log('Error ', error));
+function getBitcoinData(){
+    return fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
+    .then(resp => resp.json());
+}
 
-// var phrase = twitterText + '\n';
-// Bot.tweet(phrase);
+function getPromiseData(){
+    return Promise.all([getBitcoinData]);
+}
+
+getPromiseData().then( data => {
+    let twitterText = `Bitcoin Price: ${resp.price_usd} [USD]\n`;
+    Bot.tweet(twitterText);
+};
+  
+
+

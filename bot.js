@@ -28,7 +28,8 @@ function runBot() {
         : info.percent_change_7d + '% 📉'}
 Remaining Supply: ${(100 - info.total_supply / info.max_supply * 100).toFixed(
         3
-      )}%`
+      )}%
+#bitcoin`
     )
     .then(bitcoin => Bot.tweet(bitcoin))
     //.then(bitcoin => console.log(bitcoin)) // debugging purposes

@@ -14,7 +14,7 @@ function runBot() {
     .then(resp => resp.json())
     .then(text => text[0])
     .then(
-      info => `Bitcoin Price: ${info.price_usd} [USD]
+      info => `Bitcoin Price: $${info.price_usd} [USD]
 Remaining Supply: ${(100 - info.total_supply / info.max_supply * 100).toFixed(
         3
       )}%

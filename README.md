@@ -8,7 +8,7 @@ Bitcoin Price Twitter Bot
 <img src="./screenshot.png" width="80%">
 </div>
 
-* To send a tweet trigger the heroku server 
+* To send a tweet -> trigger the heroku server 
 ```bash
 git push; git push heroku master; heroku run node bot; # changes
 heroku run node bot # no code changes

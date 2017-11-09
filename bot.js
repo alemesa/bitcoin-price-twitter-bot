@@ -12,9 +12,8 @@ var Bot = new TwitterBot({
 function runBot() {
   fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
     .then(resp => resp.json())
-    .then(text => {
-      Bot.tweet(`Bitcoin Price: ${text.price_usd} [USD]\n`);
-    })
+    .then(text => text[0])
+    .then(bitcoin => Bot.tweet(`Bitcoin Price: ${bitcoin.price_usd} [USD]\n`))
     .catch(error => console.log('Error ', error));
 }
 

@@ -14,9 +14,12 @@ let twitterText;
 fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
   .then(resp => resp.json())
   .then(resp => {
-    twitterText = `Bitcoin Price: ${resp.price_usd} [USD]`;
+    twitterText = `Bitcoin Price: ${resp.price_usd} [USD]\n`;
+  })
+  .then(text => {
+    Bot.tweet(text);
   })
   .catch(error => console.log('Error ', error));
 
-var phrase = twitterText + '\n';
-Bot.tweet(phrase);
+// var phrase = twitterText + '\n';
+// Bot.tweet(phrase);

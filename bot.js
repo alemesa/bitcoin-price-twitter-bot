@@ -17,9 +17,6 @@ function runBot() {
     .then(text => text[0])
     .then(
       info => `Bitcoin Price: $${info.price_usd} [USD]
-Remaining Supply: ${(100 - info.total_supply / info.max_supply * 100).toFixed(
-        3
-      )}%
 1hr - change: ${info.percent_change_1h > 0
         ? info.percent_change_1h + '% 📈'
         : info.percent_change_1h + '% 📉'}
@@ -28,7 +25,10 @@ Remaining Supply: ${(100 - info.total_supply / info.max_supply * 100).toFixed(
         : info.percent_change_24h + '% 📉'}
 1week - trend: ${info.percent_change_7d > 0
         ? info.percent_change_7d + '% 📈'
-        : info.percent_change_7d + '% 📉'}`
+        : info.percent_change_7d + '% 📉'}
+Remaining Supply: ${(100 - info.total_supply / info.max_supply * 100).toFixed(
+        3
+      )}%`
     )
     .then(bitcoin => Bot.tweet(bitcoin))
     //.then(bitcoin => console.log(bitcoin)) // debugging purposes

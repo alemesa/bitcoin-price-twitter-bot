@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/alemesa/bitcoin-price-twitter-bot#readme",
   "dependencies": {
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.2.0",
     "node-twitterbot": "^0.2.2",
-    "twit": "^2.2.9"
+    "twit": "^2.2.11"
   },
   "engines": {
     "node": "8.9.0"
